@@ -7,8 +7,14 @@ import {
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 
-import { DataService, UtilsService, DrawerService } from "./services";
-const PROVIDERS = [DataService, UtilsService, DrawerService];
+import {
+  DataService,
+  UtilsService,
+  DrawerService,
+  ReadyStateService
+} from "./services";
+
+const PROVIDERS = [DataService, UtilsService, DrawerService, ReadyStateService];
 
 @NgModule({
   imports: [CommonModule, HttpClientModule]

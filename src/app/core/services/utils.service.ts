@@ -38,4 +38,27 @@ export class UtilsService {
   getMin(numArray: number[]) {
     return Math.min.apply(null, numArray);
   }
+
+  getScrollbarWidth(innerWidth) {
+    return innerWidth - document.documentElement.clientWidth;
+  }
+
+  getPossibleWidth(w, wScrollBar): number {
+    return w > 800 ? w - wScrollBar : 800;
+  }
+
+  getWindowAndScrollBar(win?: Window) {
+    win = win || window;
+    const width = win.innerWidth;
+    const widthScrllBar = this.getScrollbarWidth(width);
+    return { width, widthScrllBar };
+  }
+
+  formatDate(date: Date) {
+    const hour = date.getHours();
+    const min = date.getMinutes();
+    const sec = date.getSeconds();
+
+    return `${hour}:${min}:${sec}`;
+  }
 }
