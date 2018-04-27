@@ -17,6 +17,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild("canvas") public canvas: ElementRef;
 
   private cx: CanvasRenderingContext2D;
+  private canvasEl: any;
   public width = 400;
   public height = 400;
   public listData: ItemData[];
@@ -31,19 +32,28 @@ export class AppComponent implements OnInit, AfterViewInit {
     private dataService: DataService,
     private utilsService: UtilsService,
     private drawerService: DrawerService
-  ) {}
+  ) {
+    // setTimeout(() =>this.changeWidth(), 2000)
+  }
+
+  changeWidth() {
+    this.canvasEl.width = 800;
+  }
 
   ngAfterViewInit() {
     // get the context
-    const canvasEl = this.canvas.nativeElement;
-    this.cx = canvasEl.getContext("2d");
+    this.canvasEl = this.canvas.nativeElement;
+    this.cx = this.canvasEl.getContext("2d");
     // set the width and height
-    canvasEl.width = this.width;
-    canvasEl.height = this.height;
+    this.canvasEl.width = this.width;
+    this.canvasEl.height = this.height;
   }
 
   ngOnInit() {
-    // сделать штуку ваш браузер не поддерживает канвас
+    // линию с датами провести
+    // адаптивность
+    // сделать подписку на ресайз окна c rx
+    // где-то как-то кешировать данные для перересовки без перерасчетов
     this.getData();
   }
 
